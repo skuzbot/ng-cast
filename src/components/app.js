@@ -3,12 +3,11 @@ angular.module('video-player')
     templateUrl: 'src/templates/app.html',
     controller: function ($scope) {
       this.videos = exampleVideoData;
-      this.onClick = (vid) => {
-        console.log('clicked');
-        this.currentVideo = vid; //????
-      };
-      this.selectVideo = () => {};
-      this.searchResults = () => {};
       this.currentVideo = this.videos[0];
+      this.selectVideo = (video) => {
+        console.log('video clicked on', video); //????
+        this.currentVideo = video;
+      };
+      this.searchResults = () => {};
     }
   });
