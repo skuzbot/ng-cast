@@ -3,9 +3,8 @@ angular.module('video-player')
     templateUrl: 'src/templates/app.html',
     controller: function($scope) {
       this.videos = exampleVideoData;
-      this.onClick = function() {
-
-      };
+      this.onClick = () => {};
+      this.video = this.videos[0];  
     }
   }
   );
