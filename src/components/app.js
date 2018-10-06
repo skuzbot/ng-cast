@@ -1,13 +1,24 @@
 angular.module('video-player')
   .component('app', {
     templateUrl: 'src/templates/app.html',
-    controller: function ($scope) {
-      this.videos = exampleVideoData;
-      this.currentVideo = this.videos[0];
+    controller: function (youTube, $window) {
+    
       this.selectVideo = (video) => {
-        console.log('video clicked on', video); //????
         this.currentVideo = video;
       };
-      this.searchResults = () => {};
+      
+      this.searchResults = (data) => {
+        this.videos = data;
+        this.currentVideo = data[0];
+        console.log('searchResults ran');
+      };
+      
+      window.updateVideos = this.updateVideos = (videos) => {
+        this.videos = videos;
+        this.currentVideo = this.videos[0];
+      };
+      this.updateVideos($window.exampleVideoData);
+      youTube.search('cats', this.updateVideos);
+      
     }
   });
